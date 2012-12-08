@@ -1,0 +1,4 @@
+guard 'prostores', :user => 'username', :pass => 'password', :templateUrl => 'storesense%3ATemplateSet%3A%2F%2Flocal%2F677560%3FTemplateSetID%3D126860%26Type%3D5' do
+  watch(%r{.+\.tpl$})
+  watch(%r{.+\.(css|js)$})
+end
