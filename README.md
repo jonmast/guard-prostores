@@ -24,9 +24,9 @@ Add your username and password to the Guardfile
 Login to ProStores and go to Store Design/Page Template Manager and copy the address of the preview link (I recommend creating a new templateset).
 The URL should look something like this:
 
-http://store01.prostores.com/servlet/wholesomebookswholesale/Admin/SupportMgrTemplateSetPreview?tset=**storesense%3ATemplateSet%3A%2F%2Flocal%2F677560%3FTemplateSetID%3D126860%26Type%3D5**&smode=new
+    http://store01.prostores.com/servlet/wholesomebookswholesale/Admin/SupportMgrTemplateSetPreview?tset=**storesense%3ATemplateSet%3A%2F%2Flocal%2F677560%3FTemplateSetID%3D126860%26Type%3D5**&smode=new
 
-[Urldecode](http://meyerweb.com/eric/tools/dencoder/) the part in bold and put it in your guardfile
+[Urldecode](http://meyerweb.com/eric/tools/dencoder/) the part in between the asterisks and put it in your guardfile
 
 ## Usage
 Execute:
