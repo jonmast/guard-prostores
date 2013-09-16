@@ -3,18 +3,21 @@ module Guard
   class ProStores < Guard
     class Uploader < HTTPClient
       def push(path, options)
-        status = post('https://mystore.prostores.com/CP/submit/',
-              action: 'login',
-              username: options[:user],
-              password: options[:pass],
-              submit: 'Sign In')
-        if status.header['location'][0] =~ /let\/(.+)\/Admin/ #grab the store name from the redirect
-          storename = $1
-        else
-          return false
+        unless @storename
+          status = post('https://mystore.prostores.com/CP/submit/',
+                action: 'login',
+                username: options[:user],
+                password: options[:pass],
+                submit: 'Sign In')
+          if status.header['location'][0] =~ /let\/(.+)\/Admin/ #grab the store name from the redirect
+            @storename = $1
+          else
+            return false
+          end
         end
+        post("https://store01.prostores.com/servlet/#{@storename}/Admin/AdminTimeoutLogon?name=#{options[:user]}&password=#{options[:pass]}&jsenabled=true")
         templateFile = open(path)
-        post('https://store01.prostores.com/servlet/#{storename}/Admin/TemplateEditSource',
+        post("https://store01.prostores.com/servlet/#{@storename}/Admin/TemplateEditSource",
               :tpl => path.split('.')[0],
               :templateseturl => options[:templateUrl],
               :confirmed => 'false',
