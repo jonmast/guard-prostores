@@ -15,4 +15,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('httpclient', '~> 2.3')
   gem.files         = `git ls-files`.split($/)
   gem.require_paths = ["lib"]
+  gem.licence = 'MIT'
 end
